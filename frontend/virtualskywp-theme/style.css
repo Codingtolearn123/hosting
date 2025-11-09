@@ -1,0 +1,494 @@
+/*
+Theme Name: VirtualSkyWP
+Theme URI: https://virtualsky.io/
+Author: Virtual Sky Team
+Author URI: https://virtualsky.io/
+Description: Futuristic, Hostinger-inspired WordPress theme for the Virtual Sky AI hosting platform with WHMCS and AI tooling integrations.
+Version: 1.0.0
+Requires at least: 6.5
+Tested up to: 6.5
+Requires PHP: 8.1
+License: GPL-2.0-or-later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: virtualskywp
+Tags: hosting, responsive, marketing, gradient, dark-mode
+*/
+
+:root {
+  --vs-primary: #6c63ff;
+  --vs-secondary: #007bff;
+  --vs-accent-start: #6c63ff;
+  --vs-accent-end: #ff6cab;
+  --vs-surface: rgba(22, 16, 55, 0.82);
+  --vs-card: rgba(33, 23, 74, 0.68);
+  --vs-text: #f5f4ff;
+  --vs-text-muted: rgba(245, 244, 255, 0.75);
+  --vs-border: rgba(255, 255, 255, 0.08);
+  --vs-radius-lg: 24px;
+  --vs-radius-md: 16px;
+  --vs-radius-sm: 12px;
+  --vs-shadow: 0 30px 60px rgba(108, 99, 255, 0.28);
+  --vs-gradient: linear-gradient(135deg, var(--vs-accent-start), var(--vs-accent-end));
+  color-scheme: dark;
+}
+
+html,
+body {
+  font-family: "Poppins", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, rgba(108, 99, 255, 0.28), rgba(10, 9, 34, 0.94)), #0b0a1d;
+  color: var(--vs-text);
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+body.theme-light {
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.25), rgba(240, 242, 255, 0.9)), #f8f9ff;
+  color: #10122b;
+}
+
+body.theme-light .bg-slate-950,
+body.theme-light .bg-slate-950\/70,
+body.theme-light .bg-slate-950\/80,
+body.theme-light .bg-slate-950\/90 {
+  background-color: rgba(14, 18, 46, 0.92);
+}
+
+.virtualskywp-mobile-nav {
+  transition: max-height 0.4s ease;
+}
+
+[data-testimonial-track] {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 100%);
+  transition: transform 0.6s ease;
+}
+
+[data-testimonial-slider] {
+  overflow: hidden;
+}
+
+[data-floating-card] {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: #ffffff;
+}
+
+.site {
+  flex: 1;
+}
+
+.section-gradient {
+  background: linear-gradient(140deg, rgba(103, 61, 230, 0.25), rgba(76, 31, 255, 0.2));
+  border: 1px solid var(--vs-border);
+  border-radius: var(--vs-radius-lg);
+  padding: clamp(2rem, 5vw, 4rem);
+  box-shadow: var(--vs-shadow);
+  backdrop-filter: blur(18px);
+  position: relative;
+}
+
+.section-gradient::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+}
+
+.vs-container {
+  width: min(1120px, 90vw);
+  margin: 0 auto;
+  padding: clamp(3rem, 6vw, 6rem) 0;
+}
+
+.vs-grid {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+
+.vs-grid.two {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.vs-grid.three {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.vs-grid.four {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.vs-card {
+  background: var(--vs-card);
+  border-radius: var(--vs-radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: clamp(1.5rem, 2vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 16px 40px rgba(12, 6, 32, 0.4);
+}
+
+.vs-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  padding: 0.35rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--vs-text-muted);
+}
+
+.vs-button,
+.wp-block-button .wp-block-button__link {
+  background: var(--vs-gradient);
+  color: #ffffff;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--vs-radius-sm);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 18px 40px rgba(103, 61, 230, 0.35);
+}
+
+.vs-button:hover,
+.vs-button:focus,
+.wp-block-button .wp-block-button__link:hover,
+.wp-block-button .wp-block-button__link:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 24px 60px rgba(103, 61, 230, 0.45);
+  color: #ffffff;
+}
+
+.vs-domain-search {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.vs-domain-search input[type="search"],
+.vs-domain-search input[type="text"] {
+  flex: 1 1 240px;
+  padding: 0.85rem 1rem;
+  border-radius: var(--vs-radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(10, 6, 24, 0.85);
+  color: inherit;
+}
+
+.vs-domain-search input::placeholder {
+  color: var(--vs-text-muted);
+}
+
+.vs-pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vs-pill-list li {
+  background: rgba(255, 255, 255, 0.12);
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+.vs-pricing {
+  display: grid;
+  gap: 1.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.vs-pricing .vs-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.vs-pricing .vs-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(103, 61, 230, 0.25), rgba(76, 31, 255, 0));
+  pointer-events: none;
+}
+
+.vs-pricing .price {
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 700;
+}
+
+.vs-pricing .price span {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--vs-text-muted);
+}
+
+.vs-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: var(--vs-radius-md);
+  overflow: hidden;
+}
+
+.vs-table th,
+.vs-table td {
+  padding: 1rem 1.25rem;
+  text-align: left;
+}
+
+.vs-table tbody tr:nth-child(every) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.vs-table tbody tr:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.vs-cta-banner {
+  background: radial-gradient(circle at top right, rgba(103, 61, 230, 0.4), transparent);
+  border-radius: var(--vs-radius-lg);
+  padding: clamp(2rem, 4vw, 4rem);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+  justify-items: start;
+}
+
+.vs-footer {
+  background: rgba(8, 4, 22, 0.9);
+  padding: clamp(2rem, 5vw, 4rem) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.vs-footer .columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.vs-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.vs-footer a {
+  color: var(--vs-text-muted);
+}
+
+.vs-footer a:hover {
+  color: #fff;
+}
+
+header.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  background: rgba(8, 4, 22, 0.9);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.site-branding {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.site-navigation {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.site-navigation a {
+  color: var(--vs-text-muted);
+  font-weight: 500;
+}
+
+.site-navigation a:hover,
+.site-navigation a:focus,
+.site-navigation a[aria-current="page"] {
+  color: #ffffff;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  .site-navigation {
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 4, 22, 0.96);
+    padding: 6rem 1.5rem 2rem;
+    flex-direction: column;
+    align-items: flex-start;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    gap: 1.5rem;
+  }
+
+  .site-navigation.is-open {
+    transform: translateX(0);
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+.toast {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: rgba(8, 4, 22, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--vs-radius-md);
+  padding: 1.25rem 1.5rem;
+  min-width: 280px;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: 0 20px 40px rgba(8, 4, 22, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(16px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.toast.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.toast__title {
+  font-weight: 600;
+}
+
+.toast__message {
+  color: var(--vs-text-muted);
+  font-size: 0.95rem;
+}
+
+.toast__close {
+  border: none;
+  background: none;
+  color: var(--vs-text-muted);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.widget-area {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.wp-block-table table {
+  width: 100%;
+}
+
+.wp-block-columns {
+  gap: 1.5rem;
+}
+
+.wp-block-column {
+  border-radius: var(--vs-radius-md);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 1.5rem;
+}
+
+.wp-block-group {
+  border-radius: var(--vs-radius-md);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+}
+
+.wp-block-heading {
+  font-weight: 700;
+}
+
+.wp-block-group .wp-block-heading {
+  margin-top: 0;
+}
+
+.wp-block-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.wp-block-list {
+  padding-left: 1.25rem;
+}
+
+.wp-block-separator {
+  background: rgba(255, 255, 255, 0.1);
+  height: 1px;
+}
+
+@media (max-width: 600px) {
+  .vs-domain-search {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .toast {
+    left: 1.5rem;
+    right: 1.5rem;
+    max-width: none;
+  }
+}
