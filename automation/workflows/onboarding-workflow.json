@@ -1,0 +1,40 @@
+{
+  "name": "VirtualSkyHost Onboarding",
+  "nodes": [
+    {
+      "id": "trigger",
+      "type": "webhook",
+      "parameters": {
+        "path": "virtualskyhost/onboarding",
+        "methods": ["POST"]
+      }
+    },
+    {
+      "id": "aiGreeting",
+      "type": "openai",
+      "parameters": {
+        "operation": "createCompletion",
+        "prompt": "Generate a warm onboarding email for {{$json.customer.email}} welcoming them to VirtualSkyHost.",
+        "model": "gpt-4o-mini"
+      }
+    },
+    {
+      "id": "sendEmail",
+      "type": "smtp",
+      "parameters": {
+        "fromEmail": "welcome@virtualskyhost.com",
+        "toEmail": "={{$json.customer.email}}",
+        "subject": "Welcome to VirtualSkyHost",
+        "content": "={{$json[\"aiGreeting\"].data}}"
+      }
+    }
+  ],
+  "connections": {
+    "trigger": {
+      "main": [[{"node": "aiGreeting"}]]
+    },
+    "aiGreeting": {
+      "main": [[{"node": "sendEmail"}]]
+    }
+  }
+}
