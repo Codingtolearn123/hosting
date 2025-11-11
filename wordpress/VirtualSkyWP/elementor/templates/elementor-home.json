@@ -1,0 +1,374 @@
+{
+  "title": "Home",
+  "slug": "home",
+  "type": "page",
+  "page_settings": {
+    "layout": "full_width"
+  },
+  "content": [
+    {
+      "id": "hero-section",
+      "elType": "section",
+      "settings": {
+        "structure": "50",
+        "background_background": "gradient",
+        "background_color": "#0b0f2c",
+        "background_gradient_type": "linear",
+        "background_gradient_angle": 135,
+        "background_gradient_color": "#6c63ff",
+        "background_gradient_color_b": "#ff72d2",
+        "padding": {
+          "unit": "px",
+          "top": "120",
+          "right": "60",
+          "bottom": "120",
+          "left": "60",
+          "isLinked": false
+        },
+        "shape_divider_bottom": "tilt",
+        "shape_divider_bottom_negative": "yes",
+        "shape_divider_bottom_color": "#05081c"
+      },
+      "elements": [
+        {
+          "id": "hero-column",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100
+          },
+          "elements": [
+            {
+              "id": "hero-badge",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<span class=\"badge\">AI Optimised Cloud</span>"
+              },
+              "elements": []
+            },
+            {
+              "id": "hero-heading",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Scale faster with Virtual Sky Hosting",
+                "size": "xl"
+              },
+              "elements": []
+            },
+            {
+              "id": "hero-subheading",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>High-performance infrastructure with AI automation, backed by 24/7 engineers and seamless WHMCS provisioning.</p>"
+              },
+              "elements": []
+            },
+            {
+              "id": "hero-buttons",
+              "elType": "widget",
+              "widgetType": "button",
+              "settings": {
+                "text": "Get Started",
+                "size": "lg",
+                "link": {
+                  "url": "#",
+                  "custom_attributes": "data-whmcs-target=\"web-hosting\""
+                }
+              },
+              "elements": []
+            },
+            {
+              "id": "hero-secondary",
+              "elType": "widget",
+              "widgetType": "button",
+              "settings": {
+                "text": "Explore Plans",
+                "size": "md",
+                "button_type": "ghost",
+                "link": {
+                  "url": "#plans",
+                  "custom_attributes": "data-whmcs-target=\"pricing\""
+                }
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trust-section",
+      "elType": "section",
+      "settings": {
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "40",
+          "bottom": "40",
+          "left": "40",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "trust-column",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100
+          },
+          "elements": [
+            {
+              "id": "trust-heading",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Trusted by builders in 90+ countries"
+              },
+              "elements": []
+            },
+            {
+              "id": "trust-icons",
+              "elType": "widget",
+              "widgetType": "icon-list",
+              "settings": {
+                "icon_list": [
+                  {
+                    "text": "99.99% uptime SLA",
+                    "icon": "fas fa-cloud"
+                  },
+                  {
+                    "text": "AI-ready NVMe servers",
+                    "icon": "fas fa-rocket"
+                  },
+                  {
+                    "text": "Global CDN edge",
+                    "icon": "fas fa-globe"
+                  }
+                ],
+                "columns": "3"
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "plans-section",
+      "elType": "section",
+      "settings": {
+        "padding": {
+          "unit": "px",
+          "top": "100",
+          "right": "40",
+          "bottom": "100",
+          "left": "40",
+          "isLinked": false
+        },
+        "background_background": "classic",
+        "background_color": "#060a29"
+      },
+      "elements": [
+        {
+          "id": "plans-column",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100
+          },
+          "elements": [
+            {
+              "id": "plans-heading",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Hosting for every mission"
+              },
+              "elements": []
+            },
+            {
+              "id": "plans-sub",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Choose the path that fits your launch strategy. All orders redirect to WHMCS for secure checkout.</p>"
+              },
+              "elements": []
+            },
+            {
+              "id": "plans-inner",
+              "elType": "section",
+              "settings": {
+                "layout": "boxed",
+                "columns_gap": "extended"
+              },
+              "elements": [
+                {
+                  "id": "plans-column-1",
+                  "elType": "column",
+                  "settings": {
+                    "_column_size": 25
+                  },
+                  "elements": [
+                    {
+                      "id": "plan-card-1",
+                      "elType": "widget",
+                      "widgetType": "icon-box",
+                      "settings": {
+                        "title": "Web Hosting",
+                        "description": "Launch WordPress or static sites with LiteSpeed caching and 1-click setup.",
+                        "icon": "fas fa-layer-group",
+                        "link": {
+                          "url": "#",
+                          "custom_attributes": "data-whmcs-target=\"web-hosting\""
+                        }
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "plans-column-2",
+                  "elType": "column",
+                  "settings": {
+                    "_column_size": 25
+                  },
+                  "elements": [
+                    {
+                      "id": "plan-card-2",
+                      "elType": "widget",
+                      "widgetType": "icon-box",
+                      "settings": {
+                        "title": "Reseller",
+                        "description": "White-label hosting business with WHMCS automation.",
+                        "icon": "fas fa-store",
+                        "link": {
+                          "url": "#",
+                          "custom_attributes": "data-whmcs-target=\"reseller-hosting\""
+                        }
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "plans-column-3",
+                  "elType": "column",
+                  "settings": {
+                    "_column_size": 25
+                  },
+                  "elements": [
+                    {
+                      "id": "plan-card-3",
+                      "elType": "widget",
+                      "widgetType": "icon-box",
+                      "settings": {
+                        "title": "VPS & Cloud",
+                        "description": "Scale with dedicated resources, snapshots, and API access.",
+                        "icon": "fas fa-server",
+                        "link": {
+                          "url": "#",
+                          "custom_attributes": "data-whmcs-target=\"vps-cloud\""
+                        }
+                      },
+                      "elements": []
+                    }
+                  ]
+                },
+                {
+                  "id": "plans-column-4",
+                  "elType": "column",
+                  "settings": {
+                    "_column_size": 25
+                  },
+                  "elements": [
+                    {
+                      "id": "plan-card-4",
+                      "elType": "widget",
+                      "widgetType": "icon-box",
+                      "settings": {
+                        "title": "AI Agent Builder",
+                        "description": "Deploy GPT-powered assistants with drag-and-drop flows.",
+                        "icon": "fas fa-robot",
+                        "link": {
+                          "url": "#",
+                          "custom_attributes": "data-whmcs-target=\"ai-agent-builder\""
+                        }
+                      },
+                      "elements": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cta-section",
+      "elType": "section",
+      "settings": {
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "40",
+          "bottom": "80",
+          "left": "40",
+          "isLinked": false
+        },
+        "background_background": "gradient",
+        "background_gradient_type": "radial",
+        "background_gradient_color": "#141b46",
+        "background_gradient_color_b": "#6c63ff"
+      },
+      "elements": [
+        {
+          "id": "cta-column",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100,
+            "horizontal_position": "center",
+            "text_align": "center"
+          },
+          "elements": [
+            {
+              "id": "cta-heading",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Ready to launch?",
+                "size": "xl"
+              },
+              "elements": []
+            },
+            {
+              "id": "cta-text",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Connect your WHMCS products and start selling in minutes. Virtual Sky keeps the experience unified end-to-end.</p>"
+              },
+              "elements": []
+            },
+            {
+              "id": "cta-button",
+              "elType": "widget",
+              "widgetType": "button",
+              "settings": {
+                "text": "Connect WHMCS",
+                "size": "lg",
+                "link": {
+                  "url": "#",
+                  "custom_attributes": "data-whmcs-target=\"client-area\""
+                }
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

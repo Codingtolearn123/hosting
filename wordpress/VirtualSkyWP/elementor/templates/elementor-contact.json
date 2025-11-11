@@ -1,0 +1,101 @@
+{
+  "title": "Contact Virtual Sky",
+  "slug": "contact",
+  "type": "page",
+  "content": [
+    {
+      "id": "contact-hero",
+      "elType": "section",
+      "settings": {
+        "background_background": "gradient",
+        "background_gradient_color": "#0f1536",
+        "background_gradient_color_b": "#6c63ff",
+        "padding": {
+          "unit": "px",
+          "top": "90",
+          "right": "40",
+          "bottom": "90",
+          "left": "40",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "contact-hero-column",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100
+          },
+          "elements": [
+            {
+              "id": "contact-hero-heading",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Talk with our team",
+                "size": "xl"
+              },
+              "elements": []
+            },
+            {
+              "id": "contact-hero-text",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Reach out for migrations, partnership opportunities, or enterprise AI hosting deployments.</p>"
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "contact-details",
+      "elType": "section",
+      "settings": {
+        "padding": {
+          "unit": "px",
+          "top": "70",
+          "right": "40",
+          "bottom": "70",
+          "left": "40",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "contact-details-column",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100
+          },
+          "elements": [
+            {
+              "id": "contact-details-text",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Email: <a href=\"mailto:sales@virtualsky.io\">sales@virtualsky.io</a><br/>Support: <a href=\"mailto:support@virtualsky.io\">support@virtualsky.io</a><br/>Phone: +1 (888) 123-4567</p>"
+              },
+              "elements": []
+            },
+            {
+              "id": "contact-details-button",
+              "elType": "widget",
+              "widgetType": "button",
+              "settings": {
+                "text": "Submit a ticket",
+                "link": {
+                  "url": "#",
+                  "custom_attributes": "data-whmcs-target=\"support\""
+                }
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

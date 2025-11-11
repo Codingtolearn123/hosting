@@ -1,0 +1,150 @@
+{
+  "title": "AI Agent Builder",
+  "slug": "ai-agent-builder",
+  "type": "page",
+  "content": [
+    {
+      "id": "ai-hero",
+      "elType": "section",
+      "settings": {
+        "background_background": "gradient",
+        "background_gradient_type": "linear",
+        "background_gradient_color": "#131a3c",
+        "background_gradient_color_b": "#7f5eff",
+        "padding": {
+          "unit": "px",
+          "top": "110",
+          "right": "40",
+          "bottom": "110",
+          "left": "40",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "ai-hero-column",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100
+          },
+          "elements": [
+            {
+              "id": "ai-hero-heading",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Build GPT-powered agents in minutes",
+                "size": "xl"
+              },
+              "elements": []
+            },
+            {
+              "id": "ai-hero-text",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Configure tone, model, and handoff flows inside WordPress. Transactions complete securely through WHMCS.</p>"
+              },
+              "elements": []
+            },
+            {
+              "id": "ai-hero-button",
+              "elType": "widget",
+              "widgetType": "button",
+              "settings": {
+                "text": "Order AI Builder",
+                "link": {
+                  "url": "#",
+                  "custom_attributes": "data-whmcs-target=\"ai-agent-builder\""
+                }
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ai-showcase",
+      "elType": "section",
+      "settings": {
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "40",
+          "bottom": "80",
+          "left": "40",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "ai-showcase-column",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100
+          },
+          "elements": [
+            {
+              "id": "ai-showcase-heading",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Use cases"
+              },
+              "elements": []
+            },
+            {
+              "id": "ai-showcase-list",
+              "elType": "widget",
+              "widgetType": "icon-list",
+              "settings": {
+                "icon_list": [
+                  {"text": "24/7 support concierge", "icon": "fas fa-comments"},
+                  {"text": "Upsell automations", "icon": "fas fa-bolt"},
+                  {"text": "Knowledge base search", "icon": "fas fa-search"},
+                  {"text": "Code-ready assistant", "icon": "fas fa-code"}
+                ]
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ai-shortcode",
+      "elType": "section",
+      "settings": {
+        "padding": {
+          "unit": "px",
+          "top": "60",
+          "right": "30",
+          "bottom": "60",
+          "left": "30",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "ai-shortcode-column",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100
+          },
+          "elements": [
+            {
+              "id": "ai-shortcode-text",
+              "elType": "widget",
+              "widgetType": "shortcode",
+              "settings": {
+                "shortcode": "[virtualsky_ai_chat]"
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "title": "About Virtual Sky",
+  "slug": "about",
+  "type": "page",
+  "content": [
+    {
+      "id": "about-hero",
+      "elType": "section",
+      "settings": {
+        "background_background": "gradient",
+        "background_gradient_color": "#111737",
+        "background_gradient_color_b": "#6c63ff",
+        "padding": {
+          "unit": "px",
+          "top": "100",
+          "right": "40",
+          "bottom": "100",
+          "left": "40",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "about-hero-column",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100
+          },
+          "elements": [
+            {
+              "id": "about-hero-heading",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Where innovation meets speed",
+                "size": "xl"
+              },
+              "elements": []
+            },
+            {
+              "id": "about-hero-text",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Virtual Sky is a collective of cloud architects, AI engineers, and support pros crafting premium hosting experiences for creators and SaaS teams.</p>"
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "about-values",
+      "elType": "section",
+      "settings": {
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "40",
+          "bottom": "80",
+          "left": "40",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "about-values-column",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100
+          },
+          "elements": [
+            {
+              "id": "about-values-heading",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Our pillars"
+              },
+              "elements": []
+            },
+            {
+              "id": "about-values-list",
+              "elType": "widget",
+              "widgetType": "icon-list",
+              "settings": {
+                "icon_list": [
+                  {"text": "Customer-first decisions", "icon": "fas fa-heart"},
+                  {"text": "Automation that empowers", "icon": "fas fa-magic"},
+                  {"text": "Performance without compromise", "icon": "fas fa-tachometer-alt"},
+                  {"text": "Transparent pricing", "icon": "fas fa-balance-scale"}
+                ]
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

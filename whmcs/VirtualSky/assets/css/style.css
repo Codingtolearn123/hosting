@@ -1,0 +1,499 @@
+:root {
+  --vs-primary: #6c63ff;
+  --vs-primary-dark: #3d36c2;
+  --vs-accent: linear-gradient(135deg, #6c63ff 0%, #ff72d2 100%);
+  --vs-bg: #05081c;
+  --vs-surface: rgba(13, 18, 46, 0.9);
+  --vs-border: rgba(255, 255, 255, 0.08);
+  --vs-text: #eef1ff;
+  --vs-muted: rgba(238, 241, 255, 0.64);
+}
+
+body.virtualsky-theme {
+  margin: 0;
+  background: radial-gradient(circle at top left, rgba(108, 99, 255, 0.2), rgba(5, 8, 28, 0.92));
+  color: var(--vs-text);
+  font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  min-height: 100vh;
+}
+
+body.virtualsky-theme.vs-light {
+  background: linear-gradient(135deg, #f8f9ff, #e2e7ff);
+  color: #1a1c2d;
+}
+
+body.virtualsky-theme.vs-light .vs-sidebar,
+body.virtualsky-theme.vs-light .vs-footer,
+body.virtualsky-theme.vs-light .vs-content .vs-listing,
+body.virtualsky-theme.vs-light .vs-dashboard .vs-welcome-card,
+body.virtualsky-theme.vs-light .vs-panel,
+body.virtualsky-theme.vs-light .vs-ticket,
+body.virtualsky-theme.vs-light .vs-auth-card,
+body.virtualsky-theme.vs-light .vs-ai-panel {
+  background: rgba(255, 255, 255, 0.88);
+  color: #1a1c2d;
+  border-color: rgba(108, 99, 255, 0.15);
+}
+
+body.virtualsky-theme.vs-light .vs-nav a {
+  color: #51567a;
+}
+
+body.virtualsky-theme.vs-light .vs-nav li.active a,
+body.virtualsky-theme.vs-light .vs-nav a:hover {
+  background: rgba(108, 99, 255, 0.18);
+  color: #2d2f45;
+}
+
+body.virtualsky-theme.vs-light .vs-button.ghost {
+  border-color: rgba(108, 99, 255, 0.35);
+  color: #2d2f45;
+}
+
+.vs-shell {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+}
+
+.vs-sidebar {
+  background: rgba(7, 11, 34, 0.95);
+  border-right: 1px solid var(--vs-border);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: 1.5rem 1.25rem;
+  gap: 2rem;
+}
+
+.vs-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.vs-logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--vs-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #0b0f2c;
+}
+
+.vs-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.vs-nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 12px;
+  color: var(--vs-muted);
+  font-weight: 500;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.vs-nav li.active a,
+.vs-nav a:hover {
+  background: rgba(108, 99, 255, 0.2);
+  color: var(--vs-text);
+}
+
+.vs-nav .divider {
+  margin: 0.75rem 0;
+  height: 1px;
+  background: var(--vs-border);
+}
+
+.vs-mode-toggle {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--vs-border);
+  background: transparent;
+  color: var(--vs-text);
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.vs-main {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background: transparent;
+}
+
+.vs-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--vs-border);
+  backdrop-filter: blur(12px);
+}
+
+.vs-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: var(--vs-accent);
+  color: #0b0f2c;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.vs-button.ghost {
+  background: transparent;
+  border: 1px solid var(--vs-border);
+  color: var(--vs-text);
+}
+
+.vs-content {
+  padding: 2rem 2.5rem;
+  display: grid;
+  gap: 2rem;
+}
+
+.vs-dashboard .vs-welcome-card {
+  background: var(--vs-surface);
+  border-radius: 24px;
+  border: 1px solid var(--vs-border);
+  padding: 2rem;
+  display: grid;
+  gap: 2rem;
+}
+
+.vs-cta-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.vs-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.25rem;
+}
+
+.vs-stat {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 18px;
+  padding: 1.25rem;
+  display: grid;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.vs-stat span {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.vs-panels {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.vs-panel {
+  background: var(--vs-surface);
+  border-radius: 20px;
+  border: 1px solid var(--vs-border);
+  padding: 1.5rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.vs-panel ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.vs-panel li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.status {
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.status-active {
+  background: rgba(126, 243, 255, 0.18);
+  color: #7ef3ff;
+}
+
+.vs-listing {
+  background: var(--vs-surface);
+  border-radius: 24px;
+  border: 1px solid var(--vs-border);
+  padding: 2rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.vs-listing-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.vs-table {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.vs-table-head,
+.vs-table-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.vs-table-row {
+  text-decoration: none;
+  color: var(--vs-text);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.vs-table-row:hover {
+  transform: translateY(-3px);
+  background: rgba(108, 99, 255, 0.2);
+}
+
+.vs-table-empty {
+  text-align: center;
+  padding: 2rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.vs-ticket {
+  background: var(--vs-surface);
+  border-radius: 24px;
+  border: 1px solid var(--vs-border);
+  padding: 2rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.vs-ticket-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vs-ticket-messages {
+  display: grid;
+  gap: 1rem;
+}
+
+.vs-ticket-message {
+  border-radius: 18px;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.vs-ticket-message.admin {
+  border: 1px solid rgba(108, 99, 255, 0.4);
+}
+
+.vs-ticket-body {
+  margin-top: 0.75rem;
+  line-height: 1.6;
+}
+
+.vs-ticket-reply textarea {
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 1rem;
+  min-height: 160px;
+  background: rgba(5, 8, 24, 0.9);
+  color: var(--vs-text);
+}
+
+.vs-ticket-actions {
+  margin-top: 1rem;
+  text-align: right;
+}
+
+.vs-footer {
+  padding: 1.5rem 2rem;
+  border-top: 1px solid var(--vs-border);
+  background: rgba(7, 10, 32, 0.95);
+}
+
+.vs-footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  color: var(--vs-muted);
+}
+
+.vs-auth {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.vs-auth-card {
+  background: var(--vs-surface);
+  padding: 2.5rem;
+  border-radius: 24px;
+  border: 1px solid var(--vs-border);
+  width: min(420px, 100%);
+  display: grid;
+  gap: 1.5rem;
+}
+
+.vs-field {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.vs-field input,
+.vs-field select,
+.vs-field textarea {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.75rem 1rem;
+  background: rgba(5, 8, 24, 0.9);
+  color: var(--vs-text);
+}
+
+.vs-field-inline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.vs-alert {
+  padding: 0.75rem 1rem;
+  background: rgba(255, 72, 88, 0.18);
+  border: 1px solid rgba(255, 72, 88, 0.35);
+  border-radius: 12px;
+}
+
+.vs-auth-switch {
+  text-align: center;
+  color: var(--vs-muted);
+}
+
+.vs-ai-widget {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  display: grid;
+  gap: 1rem;
+  z-index: 9999;
+}
+
+.vs-ai-toggle {
+  border-radius: 999px;
+  border: none;
+  padding: 0.85rem 1.6rem;
+  background: var(--vs-accent);
+  color: #0b0f2c;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.vs-ai-panel {
+  background: var(--vs-surface);
+  border-radius: 20px;
+  border: 1px solid var(--vs-border);
+  padding: 1.5rem;
+  width: min(360px, 100%);
+  display: grid;
+  gap: 1rem;
+  box-shadow: 0 35px 60px rgba(4, 8, 28, 0.65);
+}
+
+.vs-ai-messages {
+  max-height: 280px;
+  overflow-y: auto;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.vs-ai-message {
+  padding: 0.65rem 0.9rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.vs-ai-message.user {
+  background: rgba(108, 99, 255, 0.25);
+  justify-self: end;
+}
+
+.vs-ai-form textarea {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.75rem 1rem;
+  background: rgba(5, 8, 24, 0.9);
+  color: var(--vs-text);
+  min-height: 100px;
+}
+
+.vs-ai-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+@media (max-width: 992px) {
+  .vs-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .vs-sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+
+  .vs-shell.sidebar-open .vs-sidebar {
+    transform: translateX(0);
+  }
+}

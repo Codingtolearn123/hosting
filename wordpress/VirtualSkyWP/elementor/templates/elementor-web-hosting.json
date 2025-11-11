@@ -1,0 +1,181 @@
+{
+  "title": "Web Hosting",
+  "slug": "web-hosting",
+  "type": "page",
+  "page_settings": {
+    "layout": "full_width"
+  },
+  "content": [
+    {
+      "id": "web-hero",
+      "elType": "section",
+      "settings": {
+        "background_background": "gradient",
+        "background_gradient_color": "#1f2458",
+        "background_gradient_color_b": "#6c63ff",
+        "padding": {
+          "unit": "px",
+          "top": "110",
+          "right": "40",
+          "bottom": "110",
+          "left": "40",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "web-hero-column",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100
+          },
+          "elements": [
+            {
+              "id": "web-hero-heading",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Web hosting engineered for growth",
+                "size": "xl"
+              },
+              "elements": []
+            },
+            {
+              "id": "web-hero-text",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>LiteSpeed caching, NVMe storage, and 24/7 AI-guided support. All plans redirect to WHMCS for checkout.</p>"
+              },
+              "elements": []
+            },
+            {
+              "id": "web-hero-button",
+              "elType": "widget",
+              "widgetType": "button",
+              "settings": {
+                "text": "Order Web Hosting",
+                "link": {
+                  "url": "#",
+                  "custom_attributes": "data-whmcs-target=\"web-hosting\""
+                }
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "web-features",
+      "elType": "section",
+      "settings": {
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "40",
+          "bottom": "80",
+          "left": "40",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "web-feature-column",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100
+          },
+          "elements": [
+            {
+              "id": "web-feature-grid",
+              "elType": "widget",
+              "widgetType": "icon-list",
+              "settings": {
+                "columns": "3",
+                "icon_list": [
+                  {
+                    "text": "Free migrations",
+                    "icon": "fas fa-arrow-right"
+                  },
+                  {
+                    "text": "AI content assistant",
+                    "icon": "fas fa-robot"
+                  },
+                  {
+                    "text": "Daily backups",
+                    "icon": "fas fa-shield-alt"
+                  },
+                  {
+                    "text": "Advanced security",
+                    "icon": "fas fa-lock"
+                  },
+                  {
+                    "text": "Global CDN",
+                    "icon": "fas fa-globe"
+                  },
+                  {
+                    "text": "WHMCS automation",
+                    "icon": "fas fa-sync-alt"
+                  }
+                ]
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "web-cta",
+      "elType": "section",
+      "settings": {
+        "background_background": "classic",
+        "background_color": "#05081c",
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "40",
+          "bottom": "80",
+          "left": "40",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "web-cta-column",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100,
+            "text_align": "center"
+          },
+          "elements": [
+            {
+              "id": "web-cta-heading",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Launch your site today"
+              },
+              "elements": []
+            },
+            {
+              "id": "web-cta-button",
+              "elType": "widget",
+              "widgetType": "button",
+              "settings": {
+                "text": "Continue to WHMCS",
+                "size": "lg",
+                "link": {
+                  "url": "#",
+                  "custom_attributes": "data-whmcs-target=\"web-hosting\""
+                }
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

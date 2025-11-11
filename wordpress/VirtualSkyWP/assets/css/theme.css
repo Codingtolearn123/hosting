@@ -1,0 +1,218 @@
+:root {
+  --vs-primary: #6c63ff;
+  --vs-secondary: #007bff;
+  --vs-accent: linear-gradient(135deg, #6c63ff 0%, #ff72d2 100%);
+  --vs-bg: #05081c;
+  --vs-text: #e9ebff;
+  --vs-muted: rgba(233, 235, 255, 0.72);
+  --vs-card-bg: rgba(15, 20, 52, 0.75);
+  --vs-border: rgba(255, 255, 255, 0.08);
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, rgba(108, 99, 255, 0.22), rgba(5, 8, 28, 0.95));
+  color: var(--vs-text);
+  font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.virtualskywp-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--vs-card-bg);
+  border: 1px solid var(--vs-border);
+  border-radius: 20px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 25px 40px rgba(8, 12, 42, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.18), rgba(255, 114, 210, 0.08));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px rgba(8, 12, 42, 0.6);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(108, 99, 255, 0.25);
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  padding: 5rem 4rem;
+  background: radial-gradient(circle at 20% 20%, rgba(108, 99, 255, 0.6), rgba(5, 8, 28, 0.92));
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(108, 99, 255, 0.25), transparent 55%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  max-width: 640px;
+  z-index: 2;
+}
+
+.hero-content h1 {
+  font-size: clamp(2.5rem, 5vw, 3.8rem);
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  color: var(--vs-muted);
+  font-size: 1.1rem;
+}
+
+.hero-metrics {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.hero-metrics div {
+  min-width: 140px;
+}
+
+.hero-metrics span {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  color: var(--vs-muted);
+  max-width: 720px;
+}
+
+.pricing-table {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.75rem;
+  margin-top: 2.5rem;
+}
+
+.pricing-card {
+  background: var(--vs-card-bg);
+  border-radius: 28px;
+  padding: 2.5rem 2rem;
+  border: 1px solid var(--vs-border);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pricing-card.highlight {
+  border-color: rgba(108, 99, 255, 0.55);
+  box-shadow: 0 25px 60px rgba(108, 99, 255, 0.35);
+}
+
+.pricing-card .price {
+  font-size: 2.8rem;
+  font-weight: 700;
+}
+
+.pricing-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.pricing-card ul li::before {
+  content: '✓';
+  margin-right: 0.5rem;
+  color: #7ef3ff;
+}
+
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.25rem;
+}
+
+.icon-tile {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--vs-border);
+  border-radius: 18px;
+  padding: 1.6rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.icon-tile strong {
+  font-size: 1.1rem;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #c8c0ff 0%, #7ef3ff 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 3.5rem 1.75rem;
+  }
+
+  .hero-metrics {
+    gap: 1.2rem;
+  }
+}

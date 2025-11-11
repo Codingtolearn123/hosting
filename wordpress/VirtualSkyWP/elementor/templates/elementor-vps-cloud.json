@@ -1,0 +1,160 @@
+{
+  "title": "VPS & Cloud",
+  "slug": "vps-cloud",
+  "type": "page",
+  "content": [
+    {
+      "id": "vps-hero",
+      "elType": "section",
+      "settings": {
+        "background_background": "gradient",
+        "background_gradient_color": "#0f1638",
+        "background_gradient_color_b": "#5f86ff",
+        "padding": {
+          "unit": "px",
+          "top": "110",
+          "right": "40",
+          "bottom": "110",
+          "left": "40",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "vps-hero-column",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100
+          },
+          "elements": [
+            {
+              "id": "vps-hero-heading",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Virtual machines with AI acceleration",
+                "size": "xl"
+              },
+              "elements": []
+            },
+            {
+              "id": "vps-hero-text",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>High frequency CPUs, NVMe storage, and webhook-ready provisioning when purchased via WHMCS.</p>"
+              },
+              "elements": []
+            },
+            {
+              "id": "vps-hero-button",
+              "elType": "widget",
+              "widgetType": "button",
+              "settings": {
+                "text": "Configure VPS",
+                "link": {
+                  "url": "#",
+                  "custom_attributes": "data-whmcs-target=\"vps-cloud\""
+                }
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vps-specs",
+      "elType": "section",
+      "settings": {
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "40",
+          "bottom": "80",
+          "left": "40",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "vps-specs-column",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100
+          },
+          "elements": [
+            {
+              "id": "vps-specs-list",
+              "elType": "widget",
+              "widgetType": "icon-list",
+              "settings": {
+                "columns": "3",
+                "icon_list": [
+                  {"text": "Root access", "icon": "fas fa-key"},
+                  {"text": "Live snapshots", "icon": "fas fa-camera"},
+                  {"text": "1 Tbps DDoS protection", "icon": "fas fa-shield-alt"},
+                  {"text": "AI inference ready", "icon": "fas fa-brain"},
+                  {"text": "Global data centers", "icon": "fas fa-globe"},
+                  {"text": "N8N automation hooks", "icon": "fas fa-project-diagram"}
+                ]
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vps-cta",
+      "elType": "section",
+      "settings": {
+        "background_background": "classic",
+        "background_color": "#060a29",
+        "padding": {
+          "unit": "px",
+          "top": "70",
+          "right": "30",
+          "bottom": "70",
+          "left": "30",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "vps-cta-column",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100,
+            "text_align": "center"
+          },
+          "elements": [
+            {
+              "id": "vps-cta-heading",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Provision via WHMCS",
+                "size": "lg"
+              },
+              "elements": []
+            },
+            {
+              "id": "vps-cta-button",
+              "elType": "widget",
+              "widgetType": "button",
+              "settings": {
+                "text": "View VPS Options",
+                "link": {
+                  "url": "#",
+                  "custom_attributes": "data-whmcs-target=\"vps-cloud\""
+                }
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "title": "Reseller Hosting",
+  "slug": "reseller-hosting",
+  "type": "page",
+  "content": [
+    {
+      "id": "reseller-hero",
+      "elType": "section",
+      "settings": {
+        "background_background": "gradient",
+        "background_gradient_type": "linear",
+        "background_gradient_color": "#10163a",
+        "background_gradient_color_b": "#6c63ff",
+        "padding": {
+          "unit": "px",
+          "top": "100",
+          "right": "40",
+          "bottom": "100",
+          "left": "40",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "reseller-hero-column",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100
+          },
+          "elements": [
+            {
+              "id": "reseller-hero-heading",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Launch your white-label hosting business",
+                "size": "xl"
+              },
+              "elements": []
+            },
+            {
+              "id": "reseller-hero-text",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Automated provisioning via WHMCS and branding-ready control panel themes to wow your clients.</p>"
+              },
+              "elements": []
+            },
+            {
+              "id": "reseller-hero-button",
+              "elType": "widget",
+              "widgetType": "button",
+              "settings": {
+                "text": "Order Reseller",
+                "link": {
+                  "url": "#",
+                  "custom_attributes": "data-whmcs-target=\"reseller-hosting\""
+                }
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reseller-benefits",
+      "elType": "section",
+      "settings": {
+        "padding": {
+          "unit": "px",
+          "top": "80",
+          "right": "40",
+          "bottom": "80",
+          "left": "40",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "reseller-benefits-column",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100
+          },
+          "elements": [
+            {
+              "id": "reseller-benefits-heading",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Everything you need to scale"
+              },
+              "elements": []
+            },
+            {
+              "id": "reseller-benefits-list",
+              "elType": "widget",
+              "widgetType": "icon-list",
+              "settings": {
+                "icon_list": [
+                  {"text": "Branded client portal", "icon": "fas fa-palette"},
+                  {"text": "Automated billing", "icon": "fas fa-credit-card"},
+                  {"text": "Smart resource limits", "icon": "fas fa-sliders-h"},
+                  {"text": "AI onboarding emails", "icon": "fas fa-envelope-open-text"},
+                  {"text": "24/7 escalation", "icon": "fas fa-headset"}
+                ]
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reseller-cta",
+      "elType": "section",
+      "settings": {
+        "background_background": "classic",
+        "background_color": "#060a29",
+        "padding": {
+          "unit": "px",
+          "top": "70",
+          "right": "30",
+          "bottom": "70",
+          "left": "30",
+          "isLinked": false
+        }
+      },
+      "elements": [
+        {
+          "id": "reseller-cta-column",
+          "elType": "column",
+          "settings": {
+            "_column_size": 100,
+            "text_align": "center"
+          },
+          "elements": [
+            {
+              "id": "reseller-cta-heading",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Connect to WHMCS",
+                "size": "lg"
+              },
+              "elements": []
+            },
+            {
+              "id": "reseller-cta-text",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Update the button target once your reseller packages are live inside WHMCS.</p>"
+              },
+              "elements": []
+            },
+            {
+              "id": "reseller-cta-button",
+              "elType": "widget",
+              "widgetType": "button",
+              "settings": {
+                "text": "Go to WHMCS",
+                "link": {
+                  "url": "#",
+                  "custom_attributes": "data-whmcs-target=\"reseller-hosting\""
+                }
+              },
+              "elements": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

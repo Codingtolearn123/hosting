@@ -1,56 +1,47 @@
-# VirtualSkyHost Platform
+# Virtual Sky Theme System
 
-VirtualSkyHost is a Hostinger-inspired hosting platform that pairs a WordPress marketing frontend with WHMCS-powered billing, a Node.js automation bridge, and n8n workflows for AI-driven onboarding and marketing.
+This repository ships coordinated themes for WordPress (Elementor) and WHMCS that mirror Hostinger's modern aesthetic while keeping all commerce inside WHMCS.
 
-## Repository Structure
+## Contents
 
-- `frontend/`
-  - `virtualskyhost-theme/` – WordPress theme providing the VirtualSkyHost marketing site with dynamic pricing, domain search, and responsive design.
-  - `plugins/virtualskyhost-whmcs-bridge/` – WordPress plugin that exposes REST endpoints, shortcodes, and admin settings for WHMCS integration.
-- `backend/` – Node.js (Express) service that proxies WHMCS, provisions Plesk accounts, and triggers n8n workflows.
-- `automation/` – Example n8n workflow JSON exports for onboarding and marketing automation.
-- `docs/` – Deployment and integration guide for WordPress, WHMCS, Plesk, and n8n.
+- `wordpress/VirtualSkyWP/` – WordPress theme
+- `wordpress/virtualsky-ai-assistant/` – WordPress AI assistant plugin
+- `whmcs/VirtualSky/` – WHMCS client theme
+- `dist/` – Installable ZIP packages generated from the sources
+- `scripts/package.sh` – Helper script to regenerate the ZIPs
 
-## Frontend (WordPress)
+## Installation
 
-1. Copy `frontend/virtualskyhost-theme` into your WordPress `wp-content/themes/` directory and activate it.
-2. Install the accompanying plugin from `frontend/plugins/virtualskyhost-whmcs-bridge` for WHMCS API access.
-3. Configure API credentials under **Settings → VirtualSkyHost WHMCS** and set up pages for each hosting category (Shared, WordPress, VPS, Dedicated).
-4. The theme automatically pulls pricing from WHMCS via the plugin or backend API and wires domain search requests to `/api/domain/search`.
+### WordPress
 
-## Backend (Node.js)
+1. Log in to your WordPress admin dashboard.
+2. Download and extract `dist/VirtualSky_WordPress.zip`. Inside you will find `VirtualSkyWP.zip`.
+3. Navigate to **Appearance → Themes → Add New → Upload Theme** and upload `VirtualSkyWP.zip`, then activate the **VirtualSkyWP** theme.
+4. From the extracted package, upload `virtualsky-ai-assistant.zip` via **Plugins → Add New → Upload Plugin**, then activate the **VirtualSky AI Assistant** plugin.
+5. Visit **Settings → VirtualSky AI Assistant** to store your OpenAI API key or define `OPENAI_API_KEY` in `wp-config.php`. The saved option takes precedence.
+6. Elementor templates for Home, Hosting, VPS, Reseller, AI Agent Builder, About, and Contact pages are imported automatically on theme activation. The pages are provisioned with Elementor content so editors can adjust them immediately.
+7. Replace each CTA hyperlink by editing the Elementor button and updating the `data-whmcs-target` attribute or URL after your WHMCS products exist.
 
-1. Copy `backend/.env.example` to `.env` and populate WHMCS, Plesk, and n8n credentials.
-2. Install dependencies and start the service:
+### WHMCS
 
-   ```bash
-   cd backend
-   npm install
-   npm run dev
-   ```
+1. Copy `dist/VirtualSky_WHMCS.zip` to your WHMCS installation server and extract it.
+2. Move the bundled `templates/VirtualSky/` directory into your WHMCS installation so that `templates/VirtualSky/header.tpl` exists.
+3. Copy `templates/VirtualSky/includes/hooks/virtualsky_hooks.php` into your WHMCS `includes/hooks/` directory if it is not already there after extraction.
+4. In WHMCS admin, go to **Setup → General Settings → General** and choose **VirtualSky** as the client area template.
+5. Store your OpenAI key via `Setup → General Settings → Other` with the setting name `VirtualSkyAIKey`, or define `VIRTUALSKY_OPENAI_API_KEY` in `configuration.php`. The key is used by the optional AI widget.
+6. The sidebar navigation links are placeholders. Once your product groups exist, update the URLs in `templates/VirtualSky/header.tpl` (search for `data-whmcs-target`) or map them via WHMCS language overrides.
 
-3. The service exposes:
-   - `GET /api/hosting/plans?category=shared`
-   - `POST /api/order/create`
-   - `GET /api/domain/search?domain=example.com`
+## Mapping WordPress CTAs to WHMCS
 
-   Use a reverse proxy (Nginx, Plesk) to publish the API under `https://api.virtualskyhost.com` and update WordPress environment variables accordingly.
+All WordPress buttons ship with `href="#"` and a descriptive `data-whmcs-target` attribute (e.g. `web-hosting`, `reseller-hosting`). After you create the corresponding product groups inside WHMCS, update each Elementor button to point to the correct WHMCS URL such as `/cart.php?gid=1`. A quick search in Elementor for `data-whmcs-target` reveals every CTA.
 
-## Automation (n8n)
+## Customisation Tips
 
-Import the JSON files in `automation/workflows/` into your n8n instance. Update webhook URLs, SMTP, and AI provider credentials to match your environment.
+- **Colors & Typography** – Adjust the CSS variables in `wordpress/VirtualSkyWP/assets/css/theme.css` and `whmcs/VirtualSky/assets/css/style.css` to tailor the gradient, accent, or typography system.
+- **Elementor layouts** – Use Elementor to modify any section. Because every page is built with Elementor widgets, you can drag-and-drop new sections without editing PHP.
+- **AI Assistant** – In WordPress the `[virtualsky_ai_chat]` shortcode and Elementor widget render the assistant. In WHMCS the floating widget posts to the server-side hook which proxies requests to OpenAI so the key never leaves the backend.
+- **Packaging** – Run `scripts/package.sh` after editing theme or plugin files to rebuild fresh ZIPs into the `dist/` directory.
 
-## Documentation
+## Product Ownership
 
-Detailed setup instructions live in `docs/SETUP.md`, covering DNS, SSL, deployment, and integration steps between WordPress, WHMCS, Plesk, and n8n.
-
-## Development Notes
-
-- WordPress theme assets are plain CSS/JS—no build step required.
-- Backend uses ES modules and includes an ESLint config (`npm run lint`).
-- Environment variables can be shared between WordPress and the backend to ensure consistent endpoint URLs and order links.
-- Buttons throughout the frontend target WHMCS order URLs like `https://billing.virtualskyhost.com/cart.php?a=add&pid=ID`.
-
-## License
-
-All code is released under the MIT license. Customize and extend the platform to fit your hosting business needs.
+No product or pricing logic lives inside WordPress or the WHMCS theme. All orders and plan management remain inside WHMCS. Replace placeholder URLs once your Web Hosting, Reseller, VPS/Cloud, and AI Agent Builder packages are live.
