@@ -1,0 +1,41 @@
+body {
+  font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+a {
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #c7d2fe;
+}
+
+.panel,.well {
+  background: rgba(12, 10, 32, 0.75) !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: #f5f4ff !important;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6c63ff, #ff6cab) !important;
+  border: none !important;
+  border-radius: 999px !important;
+  padding: 0.75rem 1.5rem !important;
+  font-weight: 600 !important;
+}
+
+.table {
+  color: #f5f4ff;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: rgba(108, 99, 255, 0.1);
+}
+
+input,select,textarea {
+  background-color: rgba(12, 10, 32, 0.85) !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #f5f4ff !important;
+}
