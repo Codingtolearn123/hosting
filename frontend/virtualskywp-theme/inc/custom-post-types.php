@@ -10,25 +10,6 @@ if (!defined('ABSPATH')) {
 }
 
 add_action('init', static function (): void {
-    register_post_type('hosting_plan', [
-        'labels' => [
-            'name' => __('Hosting Plans', 'virtualskywp'),
-            'singular_name' => __('Hosting Plan', 'virtualskywp'),
-        ],
-        'public' => true,
-        'show_in_rest' => true,
-        'supports' => ['title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'],
-        'menu_icon' => 'dashicons-cloud',
-        'rewrite' => ['slug' => 'hosting-plans'],
-    ]);
-
-    register_taxonomy('hosting_type', 'hosting_plan', [
-        'label' => __('Hosting Types', 'virtualskywp'),
-        'public' => true,
-        'show_in_rest' => true,
-        'hierarchical' => false,
-    ]);
-
     register_post_type('ai_tool', [
         'labels' => [
             'name' => __('AI Tools', 'virtualskywp'),

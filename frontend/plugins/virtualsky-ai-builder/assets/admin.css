@@ -42,3 +42,13 @@
 .virtualsky-agent-launch:hover {
   opacity: 0.9;
 }
+
+.status-success {
+  color: #38ef7d;
+  font-weight: 600;
+}
+
+.status-warning {
+  color: #ffc857;
+  font-weight: 600;
+}

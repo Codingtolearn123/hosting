@@ -14,6 +14,7 @@ $virtualskywp_includes = [
     'inc/setup.php',
     'inc/custom-post-types.php',
     'inc/meta-boxes.php',
+    'inc/whmcs.php',
     'inc/template-tags.php',
     'inc/block-patterns.php',
 ];

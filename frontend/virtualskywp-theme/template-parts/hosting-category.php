@@ -30,6 +30,11 @@ $whmcs_cart = $options['whmcs_cart_url'] ?? '#';
             </a>
         </div>
         <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <?php if (empty($plans)) : ?>
+                <article class="p-8 rounded-3xl border border-dashed border-white/20 text-center text-slate-400">
+                    <?php esc_html_e('Plans for this category are managed in WHMCS. Assign the matching product group ID in the Virtual Sky options panel to display them here.', 'virtualskywp'); ?>
+                </article>
+            <?php endif; ?>
             <?php foreach ($plans as $plan) : ?>
                 <article class="relative p-8 rounded-3xl border border-white/10 bg-slate-950/70 backdrop-blur-xl flex flex-col gap-6 <?php echo $plan['highlighted'] ? 'ring-2 ring-pink-400/70' : ''; ?>">
                     <?php if ($plan['highlighted']) : ?>
@@ -47,6 +52,9 @@ $whmcs_cart = $options['whmcs_cart_url'] ?? '#';
                         <?php endif; ?>
                         <?php if (!empty($plan['price_monthly'])) : ?>
                             <div class="text-sm text-slate-400"><?php printf(esc_html__('Then %s/mo or %s/yr', 'virtualskywp'), esc_html($plan['price_monthly']), esc_html($plan['price_yearly'] ?: __('custom', 'virtualskywp'))); ?></div>
+                        <?php endif; ?>
+                        <?php if (!empty($plan['setup_fee'])) : ?>
+                            <div class="text-xs text-slate-500 uppercase tracking-[0.3em]"><?php printf(esc_html__('Setup: %s', 'virtualskywp'), esc_html($plan['setup_fee'])); ?></div>
                         <?php endif; ?>
                     </div>
                     <ul class="space-y-2 text-sm text-slate-200">

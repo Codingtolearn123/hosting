@@ -32,6 +32,15 @@ if (!function_exists('virtualskywp_get_theme_options')) {
             'n8n_api_key' => '',
             'ai_api_key' => '',
             'floating_chat_enabled' => true,
+            'whmcs_api_endpoint' => '',
+            'whmcs_api_identifier' => '',
+            'whmcs_api_secret' => '',
+            'whmcs_currency' => 'USD',
+            'whmcs_group_shared' => '',
+            'whmcs_group_wordpress' => '',
+            'whmcs_group_reseller' => '',
+            'whmcs_group_vps' => '',
+            'whmcs_group_ai' => '',
         ];
 
         $options = get_option(VIRTUALSKYWP_OPTION_KEY, []);
@@ -150,6 +159,42 @@ add_action('admin_init', static function (): void {
             'type' => 'password',
         ]
     );
+
+    add_settings_section(
+        'virtualskywp_whmcs',
+        __('WHMCS Sync', 'virtualskywp'),
+        static function (): void {
+            echo '<p class="description">' . esc_html__('Connect the VirtualSkyWP front end to your WHMCS catalog. Pricing, badges, and automation flags come directly from product custom fields so all edits stay inside WHMCS.', 'virtualskywp') . '</p>';
+        },
+        'virtualskywp-options'
+    );
+
+    $whmcs_fields = [
+        ['whmcs_api_endpoint', __('WHMCS API Endpoint (includes/api.php)', 'virtualskywp'), 'text', __('Example: https://billing.virtualsky.io/includes/api.php', 'virtualskywp')],
+        ['whmcs_api_identifier', __('API Identifier', 'virtualskywp'), 'text', ''],
+        ['whmcs_api_secret', __('API Secret', 'virtualskywp'), 'password', ''],
+        ['whmcs_currency', __('Default Currency Code', 'virtualskywp'), 'text', __('Matches your WHMCS pricing currency (USD, EUR, etc.)', 'virtualskywp')],
+        ['whmcs_group_shared', __('Shared Hosting Group ID', 'virtualskywp'), 'text', __('Numeric WHMCS product group ID for shared hosting', 'virtualskywp')],
+        ['whmcs_group_wordpress', __('WordPress Hosting Group ID', 'virtualskywp'), 'text', __('Numeric WHMCS product group ID for WordPress hosting', 'virtualskywp')],
+        ['whmcs_group_reseller', __('Reseller Hosting Group ID', 'virtualskywp'), 'text', __('Numeric WHMCS product group ID for reseller plans', 'virtualskywp')],
+        ['whmcs_group_vps', __('VPS Hosting Group ID', 'virtualskywp'), 'text', __('Numeric WHMCS product group ID for VPS plans', 'virtualskywp')],
+        ['whmcs_group_ai', __('AI Hosting Group ID', 'virtualskywp'), 'text', __('Numeric WHMCS product group ID for AI hosting', 'virtualskywp')],
+    ];
+
+    foreach ($whmcs_fields as [$key, $label, $type, $description]) {
+        add_settings_field(
+            $key,
+            $label,
+            'virtualskywp_render_text_field',
+            'virtualskywp-options',
+            'virtualskywp_whmcs',
+            [
+                'key' => $key,
+                'type' => $type,
+                'description' => $description,
+            ]
+        );
+    }
 });
 
 if (!function_exists('virtualskywp_render_options_page')) {
@@ -180,7 +225,12 @@ if (!function_exists('virtualskywp_render_text_field')) {
         $key = $args['key'];
         $type = $args['type'] ?? 'text';
         $value = virtualskywp_get_option($key, '');
+        $description = $args['description'] ?? '';
         printf('<input type="%1$s" name="%2$s[%3$s]" value="%4$s" class="regular-text" />', esc_attr($type), esc_attr(VIRTUALSKYWP_OPTION_KEY), esc_attr($key), esc_attr((string) $value));
+
+        if ($description) {
+            printf('<p class="description">%s</p>', esc_html($description));
+        }
     }
 }
 
@@ -211,9 +261,26 @@ if (!function_exists('virtualskywp_sanitize_options')) {
                 case 'enable_dark_mode':
                     $options[$key] = (bool) $value;
                     break;
+                case 'whmcs_api_endpoint':
+                case 'whmcs_cart_url':
+                case 'whmcs_login_url':
+                case 'cta_builder_url':
+                case 'hero_video_url':
+                    $options[$key] = esc_url_raw((string) $value);
+                    break;
                 case 'n8n_api_key':
                 case 'ai_api_key':
+                case 'whmcs_api_identifier':
+                case 'whmcs_api_secret':
+                case 'whmcs_group_shared':
+                case 'whmcs_group_wordpress':
+                case 'whmcs_group_reseller':
+                case 'whmcs_group_vps':
+                case 'whmcs_group_ai':
                     $options[$key] = sanitize_text_field((string) $value);
+                    break;
+                case 'whmcs_currency':
+                    $options[$key] = strtoupper(sanitize_text_field((string) $value));
                     break;
                 default:
                     $options[$key] = sanitize_text_field((string) $value);

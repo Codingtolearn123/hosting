@@ -47,6 +47,17 @@ body {
   flex-direction: column;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.25), rgba(42, 21, 145, 0.15)),
+    radial-gradient(circle at top right, rgba(0, 123, 255, 0.25), transparent 55%),
+    radial-gradient(circle at bottom left, rgba(255, 108, 171, 0.2), transparent 60%);
+  pointer-events: none;
+  z-index: -1;
+}
+
 body.theme-light {
   background: radial-gradient(circle at top, rgba(255, 255, 255, 0.25), rgba(240, 242, 255, 0.9)), #f8f9ff;
   color: #10122b;

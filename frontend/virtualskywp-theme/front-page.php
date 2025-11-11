@@ -80,7 +80,7 @@ get_header();
             <ul class="space-y-4">
                 <?php if (empty($shared_plans)) : ?>
                     <li class="p-4 rounded-2xl bg-slate-950/60 border border-white/10 text-sm text-slate-300">
-                        <?php esc_html_e('Add shared hosting plans in the dashboard to populate this section.', 'virtualskywp'); ?>
+                        <?php esc_html_e('Connect your WHMCS shared hosting group to populate live pricing here.', 'virtualskywp'); ?>
                     </li>
                 <?php endif; ?>
                 <?php foreach (array_slice($shared_plans, 0, 3) as $plan) : ?>
@@ -104,6 +104,9 @@ get_header();
                             <?php foreach (array_slice($plan['features'], 0, 3) as $feature) : ?>
                                 <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10"><?php echo esc_html($feature); ?></span>
                             <?php endforeach; ?>
+                            <?php if (!empty($plan['setup_fee'])) : ?>
+                                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-indigo-200/90"><?php printf(esc_html__('Setup %s', 'virtualskywp'), esc_html($plan['setup_fee'])); ?></span>
+                            <?php endif; ?>
                         </div>
                         <?php if (!empty($plan['whmcs_link'])) : ?>
                             <a href="<?php echo esc_url($plan['whmcs_link']); ?>" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-indigo-300">
@@ -135,7 +138,7 @@ get_header();
                 <div class="grid gap-8 lg:grid-cols-4">
                     <?php if (empty($shared_plans)) : ?>
                         <article class="p-8 rounded-3xl border border-dashed border-white/20 text-center text-slate-400">
-                            <?php esc_html_e('Create hosting plans to showcase pricing here.', 'virtualskywp'); ?>
+                            <?php esc_html_e('Enter your WHMCS API credentials and group IDs in the Virtual Sky options page to sync pricing.', 'virtualskywp'); ?>
                         </article>
                     <?php else : ?>
                         <?php foreach ($shared_plans as $plan) : ?>

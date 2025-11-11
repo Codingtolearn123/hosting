@@ -16,6 +16,7 @@ if (!defined('ABSPATH')) {
 final class VirtualSky_Agent_Builder
 {
     public const CPT = 'virtualsky_agent';
+    private const OPTION_KEY = 'virtualsky_ai_builder_settings';
 
     private static ?self $instance = null;
 
@@ -34,6 +35,7 @@ final class VirtualSky_Agent_Builder
         add_action('add_meta_boxes', [$this, 'register_meta_boxes']);
         add_action('save_post', [$this, 'save_agent_meta'], 10, 2);
         add_action('admin_menu', [$this, 'register_builder_page']);
+        add_action('admin_init', [$this, 'register_settings']);
         add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_assets']);
         add_shortcode('virtualskywp_agent', [$this, 'render_agent_shortcode']);
         add_shortcode('virtualskywp_agent_preview', [$this, 'render_preview_shortcode']);
@@ -140,6 +142,15 @@ final class VirtualSky_Agent_Builder
             'edit_posts',
             'edit.php?post_type=' . self::CPT
         );
+
+        add_submenu_page(
+            'virtualsky-agent-builder',
+            __('API Settings', 'virtualsky-ai-builder'),
+            __('API Settings', 'virtualsky-ai-builder'),
+            'manage_options',
+            'virtualsky-agent-builder-settings',
+            [$this, 'render_settings_page']
+        );
     }
 
     public function render_builder_page(): void
@@ -157,6 +168,104 @@ final class VirtualSky_Agent_Builder
             <div id="virtualsky-agent-app" data-agents="<?php echo esc_attr(wp_json_encode(array_map([$this, 'format_agent'], $agents))); ?>"></div>
         </div>
         <?php
+    }
+
+    public function render_settings_page(): void
+    {
+        if (!current_user_can('manage_options')) {
+            return;
+        }
+
+        ?>
+        <div class="wrap virtualsky-agent-builder">
+            <h1><?php esc_html_e('AI Provider Settings', 'virtualsky-ai-builder'); ?></h1>
+            <form action="options.php" method="post">
+                <?php
+                settings_fields(self::OPTION_KEY);
+                do_settings_sections(self::OPTION_KEY);
+                submit_button();
+                ?>
+            </form>
+            <p class="description"><?php esc_html_e('The stored API key is used for agent previews and custom REST actions. It never renders on the public site.', 'virtualsky-ai-builder'); ?></p>
+        </div>
+        <?php
+    }
+
+    public function sanitize_settings($input): array
+    {
+        $defaults = [
+            'provider' => 'openai',
+            'api_key' => '',
+            'base_url' => 'https://api.openai.com/v1',
+            'default_model' => 'gpt-4o-mini',
+        ];
+
+        if (!is_array($input)) {
+            return $defaults;
+        }
+
+        $settings = $defaults;
+
+        if (isset($input['provider'])) {
+            $settings['provider'] = sanitize_key((string) $input['provider']);
+        }
+
+        if (isset($input['api_key'])) {
+            $settings['api_key'] = sanitize_text_field((string) $input['api_key']);
+        }
+
+        if (isset($input['base_url'])) {
+            $settings['base_url'] = esc_url_raw((string) $input['base_url']);
+        }
+
+        if (isset($input['default_model'])) {
+            $settings['default_model'] = sanitize_text_field((string) $input['default_model']);
+        }
+
+        return $settings;
+    }
+
+    public function render_select_field(array $args): void
+    {
+        $settings = get_option(self::OPTION_KEY, []);
+        $key = $args['key'];
+        $value = $settings[$key] ?? '';
+        $options = $args['options'] ?? [];
+
+        echo '<select name="' . esc_attr(self::OPTION_KEY . '[' . $key . ']') . '">';
+
+        foreach ($options as $option_value => $label) {
+            printf('<option value="%1$s" %2$s>%3$s</option>', esc_attr($option_value), selected($value, $option_value, false), esc_html($label));
+        }
+
+        echo '</select>';
+    }
+
+    public function render_input_field(array $args): void
+    {
+        $settings = get_option(self::OPTION_KEY, []);
+        $key = $args['key'];
+        $type = $args['type'] ?? 'text';
+        $value = $settings[$key] ?? '';
+        $description = $args['description'] ?? '';
+
+        printf('<input type="%1$s" name="%2$s[%3$s]" value="%4$s" class="regular-text" autocomplete="off" />', esc_attr($type), esc_attr(self::OPTION_KEY), esc_attr($key), esc_attr((string) $value));
+
+        if ($description) {
+            printf('<p class="description">%s</p>', esc_html($description));
+        }
+    }
+
+    private function get_api_settings(): array
+    {
+        $settings = get_option(self::OPTION_KEY, []);
+
+        return [
+            'provider' => sanitize_key($settings['provider'] ?? 'openai'),
+            'baseUrl' => esc_url_raw($settings['base_url'] ?? 'https://api.openai.com/v1'),
+            'defaultModel' => sanitize_text_field($settings['default_model'] ?? 'gpt-4o-mini'),
+            'hasKey' => !empty($settings['api_key']),
+        ];
     }
 
     public function enqueue_admin_assets(string $hook_suffix): void
@@ -183,7 +292,85 @@ final class VirtualSky_Agent_Builder
         wp_localize_script('virtualsky-agent-builder', 'VirtualSkyAgentBuilder', [
             'restUrl' => esc_url_raw(rest_url('virtualsky/v1/agents')),
             'nonce' => wp_create_nonce('wp_rest'),
+            'api' => $this->get_api_settings(),
         ]);
+    }
+
+    public function register_settings(): void
+    {
+        register_setting(self::OPTION_KEY, self::OPTION_KEY, [
+            'type' => 'array',
+            'sanitize_callback' => [$this, 'sanitize_settings'],
+            'default' => [
+                'provider' => 'openai',
+                'api_key' => '',
+                'base_url' => 'https://api.openai.com/v1',
+                'default_model' => 'gpt-4o-mini',
+            ],
+        ]);
+
+        add_settings_section(
+            'virtualsky_ai_provider',
+            __('AI Provider', 'virtualsky-ai-builder'),
+            static function (): void {
+                echo '<p class="description">' . esc_html__('Manage your OpenAI-compatible credentials so agents can call the correct API without exposing raw keys in each agent record.', 'virtualsky-ai-builder') . '</p>';
+            },
+            self::OPTION_KEY
+        );
+
+        add_settings_field(
+            'provider',
+            __('Provider', 'virtualsky-ai-builder'),
+            [$this, 'render_select_field'],
+            self::OPTION_KEY,
+            'virtualsky_ai_provider',
+            [
+                'key' => 'provider',
+                'options' => [
+                    'openai' => __('OpenAI', 'virtualsky-ai-builder'),
+                    'azure' => __('Azure OpenAI', 'virtualsky-ai-builder'),
+                    'custom' => __('Custom Compatible API', 'virtualsky-ai-builder'),
+                ],
+            ]
+        );
+
+        add_settings_field(
+            'api_key',
+            __('API Key', 'virtualsky-ai-builder'),
+            [$this, 'render_input_field'],
+            self::OPTION_KEY,
+            'virtualsky_ai_provider',
+            [
+                'key' => 'api_key',
+                'type' => 'password',
+            ]
+        );
+
+        add_settings_field(
+            'base_url',
+            __('Base URL', 'virtualsky-ai-builder'),
+            [$this, 'render_input_field'],
+            self::OPTION_KEY,
+            'virtualsky_ai_provider',
+            [
+                'key' => 'base_url',
+                'type' => 'text',
+                'description' => __('Override when using Azure OpenAI or a self-hosted compatible endpoint.', 'virtualsky-ai-builder'),
+            ]
+        );
+
+        add_settings_field(
+            'default_model',
+            __('Default Model', 'virtualsky-ai-builder'),
+            [$this, 'render_input_field'],
+            self::OPTION_KEY,
+            'virtualsky_ai_provider',
+            [
+                'key' => 'default_model',
+                'type' => 'text',
+                'description' => __('Used whenever an agent is missing a model value.', 'virtualsky-ai-builder'),
+            ]
+        );
     }
 
     public function register_rest_routes(): void

@@ -29,14 +29,23 @@
     function renderForm() {
       const form = document.createElement('form');
       form.className = 'virtualsky-agent-form';
+      const apiMeta = VirtualSkyAgentBuilder.api || {};
+      const providerLabel = apiMeta.provider ? apiMeta.provider.toUpperCase() : 'OpenAI';
+      const hasKey = apiMeta.hasKey ? wp.i18n.__('Connected', 'virtualsky-ai-builder') : wp.i18n.__('Missing API key', 'virtualsky-ai-builder');
+      const defaultModel = apiMeta.defaultModel || 'gpt-4o-mini';
       form.innerHTML = `
         <h2>${wp.i18n.__('Create Agent', 'virtualsky-ai-builder')}</h2>
         <p class="description">${wp.i18n.__('Define agent details and click save to generate a shortcode.', 'virtualsky-ai-builder')}</p>
+        <div class="notice notice-info" style="padding:12px; border-radius:8px;">
+          <strong>${wp.i18n.__('Provider', 'virtualsky-ai-builder')}: ${providerLabel}</strong>
+          <span style="margin-left:8px;" class="${apiMeta.hasKey ? 'status-success' : 'status-warning'}">${hasKey}</span>
+          <span style="margin-left:12px;">${wp.i18n.__('Default model', 'virtualsky-ai-builder')}: ${defaultModel}</span>
+        </div>
         <div class="virtualsky-agent-fields">
           <p><label>${wp.i18n.__('Agent Name', 'virtualsky-ai-builder')}<input type="text" name="name" required /></label></p>
           <p><label>${wp.i18n.__('Goal', 'virtualsky-ai-builder')}<input type="text" name="goal" /></label></p>
           <p><label>${wp.i18n.__('Tone', 'virtualsky-ai-builder')}<input type="text" name="tone" /></label></p>
-          <p><label>${wp.i18n.__('Model', 'virtualsky-ai-builder')}<input type="text" name="model" placeholder="gpt-4o" /></label></p>
+          <p><label>${wp.i18n.__('Model', 'virtualsky-ai-builder')}<input type="text" name="model" placeholder="${defaultModel}" /></label></p>
           <p><label>${wp.i18n.__('API Key Alias', 'virtualsky-ai-builder')}<input type="text" name="api_key" /></label></p>
           <p><label>${wp.i18n.__('Knowledge Base URL', 'virtualsky-ai-builder')}<input type="url" name="knowledge_base" /></label></p>
           <p><label>${wp.i18n.__('System Prompt', 'virtualsky-ai-builder')}<textarea name="prompt" rows="4"></textarea></label></p>

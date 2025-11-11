@@ -70,7 +70,7 @@
           return h(
             'div',
             { className: 'p-8 rounded-3xl border border-dashed border-white/20 text-center text-slate-300' },
-            __('Create hosting plans to showcase pricing here.', 'virtualskywp')
+            __('Configure your WHMCS API credentials and group IDs to sync plans here.', 'virtualskywp')
           );
         }
 
@@ -123,6 +123,7 @@
         const hasPrice = price && typeof price === 'string';
         const otherSuffix = billing === 'monthly' ? __('yr', 'virtualskywp') : __('mo', 'virtualskywp');
         const hasOther = otherPrice && typeof otherPrice === 'string';
+        const setupFee = plan.setup_fee || '';
 
         const excerptContent = plan.excerpt
           ? RawHTML
@@ -178,6 +179,13 @@
                 )
               : null
           ),
+          setupFee
+            ? h(
+                'div',
+                { className: 'text-xs text-slate-500 uppercase tracking-[0.3em]' },
+                `${__('Setup', 'virtualskywp')}: ${setupFee}`
+              )
+            : null,
           h(
             'ul',
             { className: 'space-y-2 text-sm text-slate-300' },

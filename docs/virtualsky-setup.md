@@ -20,9 +20,9 @@ This guide explains how to assemble the WordPress theme, AI Builder plugin, and 
    - Hero headline, subheading, and video URL.
    - WHMCS cart and client URLs.
    - Builder endpoint (`builder.virtualsky.io`) and AI/n8n API keys.
+   - WHMCS API endpoint + credentials, default currency, and product group IDs (shared/WordPress/reseller/VPS/AI) so pricing syncs from WHMCS.
    - Toggle the `$1` promotion banner or floating chat widget.
 4. Populate the following Custom Post Types:
-   - **Hosting Plans** with taxonomy slugs (`shared`, `wordpress`, `reseller`, `vps`, `ai`, `builder`).
    - **AI Tools**, **Testimonials**, **FAQs**, **Hero Slides**.
 5. Create pages using the supplied templates:
    - `/web-hosting` → *Shared Hosting*
@@ -35,10 +35,10 @@ This guide explains how to assemble the WordPress theme, AI Builder plugin, and 
 ## 3. VirtualSky AI Builder Plugin
 
 1. Upload `virtualsky-ai-builder.zip` under **Plugins → Add New → Upload Plugin** and activate it.
-2. The plugin registers a custom post type (`virtualsky_agent`) and adds **AI Agent Builder** to the admin menu.
-3. Create agents with goal, tone, model, and prompts; copy the generated shortcode `[virtualskywp_agent id="123"]` into Gutenberg blocks or templates.
-4. Use `[virtualskywp_agent_preview]` for live previews on the AI Agent Builder landing page.
-5. Map API keys inside the theme options to power production chat integrations later.
+2. The plugin registers a custom post type (`virtualsky_agent`) and adds **AI Agent Builder** to the admin menu along with an **API Settings** submenu.
+3. Open **AI Agent Builder → API Settings** and store your OpenAI-compatible provider, base URL, default model, and API key. The builder UI surfaces connection status but never exposes the raw key publicly.
+4. Create agents with goal, tone, model, and prompts; copy the generated shortcode `[virtualskywp_agent id="123"]` into Gutenberg blocks or templates.
+5. Use `[virtualskywp_agent_preview]` for live previews on the AI Agent Builder landing page.
 
 ## 4. WHMCS Theme (VirtualSkyHost)
 
@@ -53,7 +53,7 @@ This guide explains how to assemble the WordPress theme, AI Builder plugin, and 
 ## 5. n8n Automation
 
 1. Create workflow webhooks in n8n for each VPS or automation-enabled plan.
-2. Store the webhook URL in the **Plan Details** meta box (`n8n Webhook URL`).
+2. In WHMCS, add a product custom field titled `n8n Webhook` (or `Automation Webhook`) and paste the webhook URL. The theme reads and displays it automatically.
 3. In WHMCS, configure the product’s “Module Settings” or “After Module Create” hooks to call the webhook with order details.
 4. Use the stored API key from **Virtual Sky Options** to authenticate requests (e.g., `x-virtualsky-key` header).
 
@@ -65,9 +65,16 @@ This guide explains how to assemble the WordPress theme, AI Builder plugin, and 
 
 ## 7. Pricing & $1 Offer Logic
 
-- Each Hosting Plan accepts `Monthly Price`, `Yearly Price`, `Promo (First Month)` and a `Badge Text`.
-- Enabling the `$1 First Month` toggle in Theme Options surfaces the badge across home/product templates.
-- For WHMCS integration, create a promotional code or “override price” for the first invoice and reference it in product descriptions.
+- Pricing now flows exclusively from WHMCS. Populate `Monthly`, `Annually`, and promo overrides inside the WHMCS product pricing UI.
+- Optional custom fields recognised by the theme:
+  - `Promo Price` or `First Month Price`
+  - `Badge` / `Badge Text`
+  - `Free Domain` (`yes`/`no`)
+  - `AI Ready` (`yes`/`no`)
+  - `Features` (one item per line)
+  - `n8n Webhook`
+- Enabling the `$1 First Month` toggle in Theme Options applies marketing copy when a promo price is returned.
+- For billing, create a WHMCS promotion or first-invoice override instead of editing WordPress content.
 
 ## 8. Floating Chat / Future Integrations
 
