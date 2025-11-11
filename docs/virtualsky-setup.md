@@ -24,13 +24,7 @@ This guide explains how to assemble the WordPress theme, AI Builder plugin, and 
    - Toggle the `$1` promotion banner or floating chat widget.
 4. Populate the following Custom Post Types:
    - **AI Tools**, **Testimonials**, **FAQs**, **Hero Slides**.
-5. Create pages using the supplied templates:
-   - `/web-hosting` → *Shared Hosting*
-   - `/wordpress-hosting` → *WordPress Hosting*
-   - `/reseller-hosting` → *Reseller Hosting*
-   - `/vps-hosting` → *VPS Hosting*
-   - `/ai-hosting` → *AI Hosting*
-   - `/website-builder`, `/ai-tools`, `/ai-agent-builder`
+5. The theme automatically provisions landing pages for `/web-hosting`, `/wordpress-hosting`, `/reseller-hosting`, `/vps-hosting`, `/ai-hosting`, `/website-builder`, `/ai-tools`, `/ai-agent-builder`, and `/contact` the first time it is activated. Update their Gutenberg blocks to suit your copy.
 
 ## 3. VirtualSky AI Builder Plugin
 

@@ -20,9 +20,9 @@ Virtual Sky is an AI-powered hosting stack combining a cinematic WordPress marke
    - Hero copy, hero video URL, and CTA buttons.
    - WHMCS cart/login URLs, builder endpoint, automation toggles, and API keys.
    - `$1` promotion, floating chat widget, and color palette.
-3. Populate Custom Post Types: Hosting Plans (with taxonomy slugs), AI Tools, Testimonials, FAQs, Hero Slides.
+3. Populate Custom Post Types: AI Tools, Testimonials, FAQs, Hero Slides.
 4. Install the **VirtualSky AI Builder** plugin to manage AI agents and embed shortcodes.
-5. Assign templates to key landing pages (`/web-hosting`, `/wordpress-hosting`, `/reseller-hosting`, `/vps-hosting`, `/ai-hosting`, `/website-builder`, `/ai-tools`, `/ai-agent-builder`).
+5. The theme seeds the `/web-hosting`, `/wordpress-hosting`, `/reseller-hosting`, `/vps-hosting`, `/ai-hosting`, `/website-builder`, `/ai-tools`, and `/ai-agent-builder` pages automatically on activation—adjust their copy or blocks as needed.
 
 ## WHMCS Theme
 

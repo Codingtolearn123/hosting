@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 /*
-Template Name: Shared Hosting
+Template Name: Web Hosting
 */
 
 get_header();
